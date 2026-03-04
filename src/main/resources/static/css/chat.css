@@ -1,0 +1,157 @@
+body {
+    font-family: sans-serif;
+    background-color: #1e1e1e;
+    font-family: Arial, sans-serif;
+    /* Add enough height to make the page scrollable for testing */
+    height: 100vh;
+    margin: 0;
+}
+
+/* --- Form Container --- */
+#messageForm {
+    /* --- THE KEY CHANGE IS HERE --- */
+    align-items: flex-end; /* Aligns items to the top instead of center */
+
+    /* --- Existing styles --- */
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    width: 60%;
+    max-width: 700px;
+    background-color: #2a2a2a;
+    border-radius: 4px; /* Adjusted slightly for aesthetics with padding */
+    padding: 10px 10px 10px 20px;
+    border: 1px solid #444;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Add this rule to make the textarea line up better */
+#userQuery {
+    line-height: 1.4; /* Adjust line-height for better spacing */
+    /* ... keep all your other userQuery styles */
+    flex-grow: 1;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #ECECF1;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    resize: none;
+    overflow-y: hidden;
+    max-height: 200px; 
+}
+/* --- Placeholder Text Style --- */
+#userQuery::placeholder {
+    color: #8E8EA0;
+    opacity: 1;
+}
+
+/* --- The Icon Submit Button --- */
+
+/* Style the button container */
+.submitBtn {
+  background-color: #3a3a3a; /* A blue background */
+  color: white; /* This will affect the <span> text */
+  border: none;
+  padding: 7px 7px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex; /* Use flexbox for easy alignment */
+  align-items: center;
+  gap: 10px; /* Creates space between the icon and the text */
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.submitBtn svg{
+    width: 20px;
+    height: 20px;
+}
+
+.submitBtn:hover {
+  background-color: #007bff; /* A darker blue on hover */
+}
+
+/* THIS IS THE CRUCIAL PART
+  Target the path INSIDE the SVG with the class .submit-icon 
+*/
+
+.submitBtn:hover .submit-icon {
+  filter: drop-shadow(0 0 10px rgba(0,123,255,0.6));
+}
+
+.submitBtn .submit-icon path {
+  fill: #dcdcdc; /* Set the icon color to white */
+}
+
+.submitBtn:hover .submit-icon path {
+  fill: #dcdcdc;
+}
+
+#messages { 
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            min-width: 700px;
+            gap: 10px;
+            padding: 10px;
+            padding-bottom: 300px;
+          }
+        .question { 
+            padding: 10px;
+            background-color: #2f2f2f;
+            font-weight: bold; 
+            color: #dcdcdc; 
+            max-width: 500px;
+            border-radius: 4px;
+            display: inline-block;
+            align-self: flex-end;
+        }
+        .answer { 
+            padding: 10px;
+            display: inline-block;
+            align-self: flex-start;
+            border-radius: 4px;
+            color: #e6e6e6;  background-color: #3a3a3a;
+            max-width: 500px;
+          }
+        .thinking { color: #007bff; font-style: italic; }
+
+        .main-container{width: 100vw; min-height:100vh; display: flex; justify-content: center;}
+    
+
+        /* In your chat.css file */
+
+.user { /* CHANGED from .USER */
+  /* styles for user messages */
+  background-color: #2f2f2f; /* Adjusted for dark theme */
+  color: #dcdcdc;
+  align-self: flex-end;
+  font-weight: bold; 
+  max-width: 500px;
+  border-radius: 4px;
+  padding: 5px;
+  display: inline-block;
+  white-space: pre-wrap; 
+}
+
+.assistant { /* CHANGED from .ASSISTANT */
+  /* styles for AI messages */
+  background-color: #3a3a3a;
+  color: #e6e6e6;
+  align-self: flex-start;
+  max-width: 500px;
+  border-radius: 4px;
+  padding: 5px;
+  white-space: pre-wrap; 
+  display: inline-block;
+}
+
+.chat-header h2{
+  position: absolute;
+  top:0px;
+  left: 40px;
+  color: #007bff;
+}

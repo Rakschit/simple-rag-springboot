@@ -1,0 +1,254 @@
+*{margin: 0; top: 0; left: 0;}
+
+body { 
+  margin: 0; height: 100vh; display: flex; 
+  justify-content: center; align-items: center;
+  background-color: #1e1e1e; /* Dark background */
+  font-family: Arial, sans-serif;
+}
+
+.main-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  animation: fadeIn 0.6s ease-in;
+  gap: 30px;
+}
+
+.upload-section{
+  color: #E0E0E0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -300px;
+  gap: 10px;
+  padding: 00px 100px 00px 100px;
+  margin-bottom: 10px;
+}
+    
+.upload-section h1{ font-size: 2.1em; text-align: center; font-weight: 500;}
+.upload-section p{font-size: 14px; color: #bbb; margin-bottom: 25px;}
+
+.upload-section #uploadBtn {
+  background-color: #4A4A4A;
+  color: #E0E0E0;
+  border: none;
+  padding: 12px 35px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+}
+
+.upload-section #uploadBtn:hover { background: #007bff; transform: scale(1.05); box-shadow: 0 0 10px rgba(0,123,255,0.6); }  
+
+.overlay {          
+  color: white;
+  background-color: rgba(31, 105, 216, 0.6); /* darker overlay */
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  position: fixed; 
+  top:0; 
+  left: 0; 
+  width: 100vw; 
+  height: 100vh; 
+  opacity: 0; 
+  z-index: 1000; 
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  backdrop-filter: blur(6px); /* adds modern blur */
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.overlay div {
+  font-size: 1.4em;
+  font-weight: 500;
+  text-align: center;
+  border: 2px solid rgba(232,232,232,0.6);
+  border-radius: 8px;
+  padding: 25px 40px;
+  background-color: rgba(255,255,255,0.05); /* subtle transparent box */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.overlay.visible {
+  opacity: 1;
+  pointer-events: auto; /* Capture mouse events when visible */
+}
+
+.overlay.visible div {
+  transform: scale(1); /* scale up smoothly */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+/* --- THEME-MATCHED STYLES FOR CHAT LIST AND FILTERS --- */
+.search-section {
+    color: #E0E0E0;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 2rem;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.search-section h3 a {
+    color: #6495ED; /* Cornflower blue */
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.filter-controls {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter-controls input[type="text"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: #2a2a2a;
+    color: #E0E0E0;
+    width: 438px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filter-controls input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+}
+
+.filter-controls button {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #4A4A4A;
+    color: #E0E0E0;
+    transition: background-color 0.3s ease;
+}
+
+.filter-controls button:hover {
+    background-color: #007bff;
+}
+
+.filter-controls button.active-sort {
+    background-color: #007bff;
+    font-weight: bold;
+}
+
+.chat-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.chat-table th, .chat-table td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: left;
+}
+
+.chat-table th {
+    background-color: #333;
+    color: white;
+}
+
+.chat-table tr {
+    background-color: #2c2c2c;
+    color: #E0E0E0;
+    transition: background-color 0.3s ease;
+}
+
+.chat-table tr:nth-child(odd) {
+     background-color: #252525;
+}
+
+.chat-table tr:hover {
+    background-color: #3a3a3a;
+}
+
+.chat-table a {
+    color: #6495ED; /* Cornflower Blue */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.chat-table a:hover {
+    text-decoration: underline;
+}
+
+
+/* --- Styles for User Dropdown --- */
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    right: 0;
+    background-color: #333; /* Dark background for the dropdown */
+    min-width: 120px;
+    margin-top: 30px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dropdown-content form {
+    margin: 0;
+}
+
+.dropdown-content input[type="submit"] {
+    color: #E0E0E0; /* Light text */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content input[type="submit"]:hover {
+    background-color: #4a4a4a; /* Darker grey on hover */
+}
+
+/* This class is toggled by JavaScript to show the dropdown */
+.show {
+    display: block;
+}
+
+.delete-btn{
+    background-color: transparent;
+    outline: none;
+    border: 0px;
+    color: rgb(152, 42, 42);
+    cursor: pointer;
+    font-weight: 100;
+    transition: color 0.3s ease;
+}
+
+.delete-btn:hover{
+    color: rgb(255, 0, 0);
+}
